@@ -61,7 +61,6 @@ router.post("/login", (req, res) => {
         }
     );
 });
-
 router.post("/register", (req, res) => {
     var rankVar = req.body.rank;
     var first_nameVar = req.body.first_name;
@@ -94,11 +93,11 @@ router.post("/register", (req, res) => {
             }, function (err, result) {
                 if (err) {
                     res.send({
-                        status: false
+                        status: false,
+                        message: err.message
                     });
                 }
                 console.log(result);
-
                 if (result) {
                     res.send({
                         status: false,
@@ -108,12 +107,12 @@ router.post("/register", (req, res) => {
                     dbo.collection("userLoginTable").insertOne(userObj, function (err, result) {
                         if (err) {
                             res.send({
-                                status: false
+                                status: false,
+                                message: err.message
                             });
                         }
                         res.send({
-                            status: "store success",
-                            name: nameVar //response
+                            status: true
                         });
                     });
                 }
@@ -122,7 +121,6 @@ router.post("/register", (req, res) => {
         }
     );
 });
-
 router.post('/verifyToken', (req, res) => {
     jwt.verify(
         req.body.token,
@@ -144,5 +142,4 @@ router.post('/verifyToken', (req, res) => {
         }
     );
 });
-
 module.exports - router;
