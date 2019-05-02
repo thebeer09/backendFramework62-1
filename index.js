@@ -16,7 +16,7 @@ app.use(function (req, res, next) {
 
 const port = process.env.PORT || 3000
 app.listen(port, () => {
-    console.log(`Running on http://localhost:${port}`);
+    console.log(`Running on https://backend-framework62jakkrit.herokuapp.com`);
 });
 
 const login = require('./routes/login'); // 
